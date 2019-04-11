@@ -111,6 +111,18 @@ DATABASES = {
             'MARS_Connection': True,
         },
     },
+    'db_mssql_146245': {
+        'NAME': 'aws',
+        'ENGINE': 'sql_server.pyodbc',
+        'HOST': '172.21.146.245',
+        'PORT': '1433',
+        'USER': 'sa',
+        'PASSWORD': 'sa87117',
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 10.0',
+            'MARS_Connection': True,
+        },
+    },
 }
 # set this to False if you want to turn off pyodbc's connection pooling
 # DATABASE_CONNECTION_POOLING = False
@@ -158,3 +170,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
