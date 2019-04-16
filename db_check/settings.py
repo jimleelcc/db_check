@@ -97,6 +97,7 @@ DATABASES = {
         'OPTIONS': {
             'driver': 'SQL Server Native Client 10.0',
             'MARS_Connection': True,
+            'AUTOCOMMIT': True,
         },
     },
     'db_mssql_162009': {
@@ -109,6 +110,7 @@ DATABASES = {
         'OPTIONS': {
             'driver': 'SQL Server Native Client 10.0',
             'MARS_Connection': True,
+            'AUTOCOMMIT': True,
         },
     },
     'db_mssql_146245': {
@@ -121,6 +123,7 @@ DATABASES = {
         'OPTIONS': {
             'driver': 'SQL Server Native Client 10.0',
             'MARS_Connection': True,
+            'AUTOCOMMIT': True,
         },
     },
 }

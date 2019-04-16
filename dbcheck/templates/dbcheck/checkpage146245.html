@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" >
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
-
-    <title>checkpage</title>
+    <script src="{% static 'bootstrap/js/feather.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/Chart.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/dashboard.js' %}" ></script>
+    <title>数据库检查网站</title>
 
     <style>
       .bd-placeholder-img {
@@ -25,86 +27,141 @@
           font-size: 3.5rem;
         }
       }
-
     </style>
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static 'bootstrap/css/starter-template.css' %}" >
+   <link rel="stylesheet" href="{% static 'bootstrap/css/album.css' %}" >
+   <link rel="stylesheet" href="{% static 'bootstrap/css/dashboard.css' %}" >
   </head>
-  
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
+  </nav>
 
-<main role="main" class="container">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'dbcheck:主页' %}">
+                <span data-feather="home"></span>
+                数据库 <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dbcheck:检查页面' %}">
+                <span data-feather="file"></span>
+                Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="shopping-cart"></span>
+                Products
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                Customers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="bar-chart-2"></span>
+                Reports
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                Integrations
+              </a>
+            </li>
+          </ul>
 
-  <div class="starter-template">
-    <div>
-        <h4>结果</h4>
-        <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">被阻塞的会话ID</th>
-              <th scope="col">被阻塞的会话的SQL语句</th>
-              <th scope="col">导致阻塞的会话ID</th>
-              <th scope="col">导致阻塞的会话的SQL语句</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for foo in t3 %}
-                <tr>
-                  <th scope="row">{{ forloop.counter}}</th>
-                  <td>{{ foo.0.0 }}</td>
-                  <td>{{ foo.0.1 }}</td>
-                  <td>{{ foo.1.0 }}</td>
-                  <td>{{ foo.1.1 }}</td>
-                </tr>
-            {% endfor %}            
-          </tbody>
-        </table>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Saved reports</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Current month
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Last quarter
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Social engagement
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Year-end sale
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main role="main" class="container">
+
+        <div class="starter-template">
+          <div>
+              <h4>结果</h4>
+              <table class="table table-bordered" name="table_result">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">被阻塞的会话ID</th>
+                    <th scope="col">被阻塞的会话的SQL语句</th>
+                    <th scope="col">导致阻塞的会话ID</th>
+                    <th scope="col">导致阻塞的会话的SQL语句</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for foo in t3 %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{ foo.0.0 }}</td>
+                        <td>{{ foo.0.1 }}</td>
+                        <td>{{ foo.1.0 }}</td>
+                        <td>{{ foo.1.1 }}</td>
+                      </tr>
+                  {% endfor %}            
+                </tbody>
+              </table>
+          </div>
+
+          <div>
+              <textarea rows="10" cols="200">
+                 {{ t1 }}
+
+                 {{ t2 }}
+
+                 {{ t3 }}
+              </textarea>
+          </div>
+        </div>
+      </main> 
     </div>
-
-    <div>
-        <textarea rows="10" cols="200">
-           {{ t1 }}
-
-           {{ t2 }}
-
-           {{ t3 }}
-        </textarea>
-    </div>
   </div>
 
-
-</body>
 </html>

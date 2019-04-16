@@ -20,7 +20,7 @@ app_name = 'dbcheck'
 urlpatterns = [
     path('home/', views.home, name='主页'),
     path('checkpage/', views.checkpage, name='检查页面'),
-    path('checkpage146245/', views.checkpage146245, name='146245检查页面'),
+    path('checkpage146245/', views.checkpage146245),
     # path('about/', views.about, name='关于本站'),
     # path('edit/<每一件事_id>', views.edit, name='编辑'),
     # path('del/<每一件事_id>', views.delete, name='删除'),

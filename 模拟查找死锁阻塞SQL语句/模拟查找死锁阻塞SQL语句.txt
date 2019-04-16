@@ -1,0 +1,20 @@
+BEGIN TRAN
+UPDATE dbtest.dbo.myProduct SET price = price + 1 WHERE id=1
+
+SELECT TOP 1000 [id]
+      ,[price]
+  FROM [dbtest].[dbo].[myProduct]
+
+BEGIN TRAN
+UPDATE dbtest.dbo.myBook SET price = price + 1 WHERE id=1
+
+SELECT TOP 1000 [id]
+      ,[price]
+  FROM [dbtest].[dbo].[myBook]
+
+BEGIN TRAN
+UPDATE dbtest.dbo.myToy SET price = price + 1 WHERE id=1
+
+SELECT TOP 1000 [id]
+      ,[price]
+  FROM [dbtest].[dbo].[myToy]
