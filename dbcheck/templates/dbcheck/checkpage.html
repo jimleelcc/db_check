@@ -141,6 +141,8 @@
                     <th scope="col">被阻塞的会话的SQL语句</th>
                     <th scope="col">导致阻塞的会话ID</th>
                     <th scope="col">导致阻塞的会话的SQL语句</th>
+                    <th scope="col">杀死阻塞进程</th>
+                    <th scope="col">测试</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -151,6 +153,49 @@
                         <td>{{ foo.0.1 }}</td>
                         <td>{{ foo.1.0 }}</td>
                         <td>{{ foo.1.1 }}</td>
+                        <td>
+                          <form method="POST" action="{% url 'dbcheck:杀死进程' foo.1.0 %}">
+                            {% csrf_token %}
+                            <input class="btn btn-danger" type="submit" value="杀死{{ foo.1.0 }}进程">
+                          </form>
+                        </td>
+                        <td>
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Launch demo modal
+                          </button>
+
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  ...
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+
+                        </td>
+
+
+
+
+
+
                       </tr>
                   {% endfor %}            
                 </tbody>

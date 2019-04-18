@@ -19,6 +19,7 @@ from . import views
 app_name = 'dbcheck'
 urlpatterns = [
     path('home/', views.home, name='主页'),
+    path('kill/<foo_1_0>', views.kill, name='杀死进程'),
     path('checkpage/', views.checkpage, name='检查页面'),
     path('checkpage146245/', views.checkpage146245, name='146245检查页面'),
     # path('about/', views.about, name='关于本站'),

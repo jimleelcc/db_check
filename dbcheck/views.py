@@ -55,6 +55,17 @@ def checkpage(request):
             return render(request, 'dbcheck/checkpage.html')
 
 
+def kill(request, foo_1_0):
+    if request.method == "POST":
+        # a = Todo.objects.get(id=每一件事_id)
+        spid_kill = foo_1_0
+        curs_kill = connections['db_mssql_162009'].cursor()
+        curs_kill.execute("kill %s" % spid_kill)
+        return redirect('dbcheck:检查页面')
+    else:
+        return redirect('dbcheck:检查页面')
+
+
 def checkpage146245(request):
     curs_find_test = connections['db_mssql_146245'].cursor()
     curs_find_test.execute("select A.SPID as 被阻塞进程,a.CMD AS 正在执行的操作,b.spid AS 阻塞进程号,b.cmd AS 阻塞进程正在执行的操作 \
