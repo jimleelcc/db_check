@@ -1,0 +1,47 @@
+{% extends "dbcheck/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+      <main role="main" class="container">
+
+        <div class="starter-template">
+          <div>
+              <h4>结果</h4>
+              <table class="table table-bordered" name="table_result">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">被阻塞的会话ID</th>
+                    <th scope="col">被阻塞的会话的SQL语句</th>
+                    <th scope="col">导致阻塞的会话ID</th>
+                    <th scope="col">导致阻塞的会话的SQL语句</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for foo in t3 %}
+                      <tr>
+                        <th scope="row">{{ forloop.counter}}</th>
+                        <td>{{ foo.0.0 }}</td>
+                        <td>{{ foo.0.1 }}</td>
+                        <td>{{ foo.1.0 }}</td>
+                        <td>{{ foo.1.1 }}</td>
+                      </tr>
+                  {% endfor %}            
+                </tbody>
+              </table>
+          </div>
+
+          <div>
+              <textarea rows="10" cols="200">
+                 {{ t1 }}
+
+                 {{ t2 }}
+
+                 {{ t3 }}
+              </textarea>
+          </div>
+        </div>
+      </main> 
+{% endblock content %}

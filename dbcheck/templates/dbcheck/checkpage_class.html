@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, Bootstrap Table!</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap/css/all.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-table-master/dist/bootstrap-table.min.css' %}" >
+  </head>
+
+
+  
+  <body>
+
+
+
+
+<table data-toggle="table" data-show-export="true">
+  <thead>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th>Item Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Item 1</td>
+      <td>$1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Item 2</td>
+      <td>$2</td>
+    </tr>
+  </tbody>
+</table>
+
+    
+
+
+
+  </body>
+  <script src="{% static 'bootstrap/js/jquery-3.4.0.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/js/popper.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
+
+  <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+  <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+  <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+  <script src="{% static 'bootstrap/bootstrap-table-master/dist/bootstrap-table.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/bootstrap-table-master/dist/extensions/export/bootstrap-table-export.js' %}" ></script>
+
+
+
+  <script src="{% static 'bootstrap/js/feather.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/js/Chart.min.js' %}" ></script>
+  <script src="{% static 'bootstrap/js/dashboard.js' %}" ></script>
+
+
+</html>

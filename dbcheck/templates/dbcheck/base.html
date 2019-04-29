@@ -6,10 +6,20 @@
     {% load staticfiles %}
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap/css/all.css' %}" >
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-table-master/dist/bootstrap-table.min.css' %}" >
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="{% static 'bootstrap/js/jquery-3.3.1.slim.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/js/jquery-3.4.0.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/popper.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}" ></script>
+
+    <script src="{% static 'bootstrap/tableExport.jquery.plugin-master/tableExport.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/tableExport.jquery.plugin-master/libs/jsPDF/jspdf.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/tableExport.jquery.plugin-master/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js' %}" ></script>
+
+    <script src="{% static 'bootstrap/bootstrap-table-master/dist/bootstrap-table.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/bootstrap-table-master/dist/locale/bootstrap-table-zh-CN.min.js' %}" ></script>
+    <script src="{% static 'bootstrap/bootstrap-table-master/dist/extensions/export/bootstrap-table-export.js' %}" ></script>
 
     <script src="{% static 'bootstrap/js/feather.min.js' %}" ></script>
     <script src="{% static 'bootstrap/js/Chart.min.js' %}" ></script>
@@ -28,7 +38,7 @@
       }
 
       .table {
-          width: 120%;
+          width: 100%;
           margin-bottom: rem;
           color: #212529;
       }

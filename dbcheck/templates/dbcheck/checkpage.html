@@ -1,29 +1,51 @@
-{% extends "dbcheck/base.html" %}
+﻿{% extends "dbcheck/base.html" %}
 
 {% load staticfiles %}
 
 {% block content %}
 
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">数据库检查结果</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                <a href="{% url 'dbcheck:导出' %}">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+                </a>
+              </div>
+              <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This week
+              </button>
+            </div>
+          </div>
+      </main>
+
       <main role="main" class="container">
 
-        <div class="starter-template">
-          <div>
-              <h4>结果</h4>
-              <table class="table table-bordered" name="table_result">
+              <table id="table" class="table table-bordered" name="table_result" 
+              data-toggle="table" 
+              data-show-export="true"
+              data-pagination="true"
+              data-click-to-select="true"
+              data-toolbar="#toolbar"
+              data-show-toggle="ture"
+              >
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">被阻塞的会话ID</th>
-                    <th scope="col">被阻塞的会话的SQL语句</th>
-                    <th scope="col">导致阻塞的会话ID</th>
-                    <th scope="col">导致阻塞的会话的SQL语句</th>
-                    <th scope="col">杀死阻塞进程</th>
+                    <th data-field="id" scope="col">序号</th>
+                    <th data-field="spid_wait" scope="col">被阻塞的会话ID</th>
+                    <th data-field="spid_wait_text" scope="col">被阻塞的会话的SQL语句</th>
+                    <th data-field="spid_X" scope="col">导致阻塞的会话ID</th>
+                    <th data-field="spid_X_text" scope="col">导致阻塞的会话的SQL语句</th>
+                    <th data-field="kill_spid" scope="col">杀死阻塞进程</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for foo in t3 %}
                       <tr>
-                        <th scope="row">{{ forloop.counter}}</th>
+                        <td scope="row">{{ forloop.counter}}</td>
                         <td>{{ foo.0.0 }}</td>
                         <td>{{ foo.0.1 }}</td>
                         <td>{{ foo.1.0 }}</td>
@@ -58,32 +80,24 @@
                               </div>
                             </div>
                           </div>
-
-
-
-
                         </td>
-
-
-
-
-
-
                       </tr>
                   {% endfor %}            
                 </tbody>
               </table>
+             
+             <div>
+                 <textarea rows="10" cols="200">
+                    {{ t1 }}
+
+                    {{ t2 }}
+
+                    {{ t3 }}
+                 </textarea>
+             </div>
+
           </div>
 
-          <div>
-              <textarea rows="10" cols="200">
-                 {{ t1 }}
-
-                 {{ t2 }}
-
-                 {{ t3 }}
-              </textarea>
-          </div>
         </div>
       </main> 
 {% endblock content %}
